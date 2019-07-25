@@ -56,11 +56,11 @@ def restaurant():
                                 "title": "상록원 1층",
                                 "description": "운영시간 \n (분식) \n 평일: 09:00 ~ 18:00 \n 주말: 휴무 \n \n (솥앤누들) \n 평일: 10:30 ~ 19:00 \n 주말: 10:30 ~ 18:00",
                                 "thumbnail": {
-                                    "imageUrl": ""
+                                    "imageUrl": "https://avatars1.githubusercontent.com/u/48274638?s=460&v=4"
                                 },
                                 "buttons": [
                                     {
-                                        "action": "weblink",
+                                        "action": "webLink",
                                         "label": "메뉴 확인하기",
                                         "webLinkUrl": "http://dgucoop.dongguk.edu/mobile/menu.html?code=7"
                                     }
@@ -70,16 +70,16 @@ def restaurant():
                                 "title": "상록원 2층 & 3층",
                                 "description": "운영시간 \n (2층) \n 평일: 10:30 ~ 18:00 \n 주말: 휴무 \n \n (3층) \n 평일: 11:00 ~ 18:00 \n 주말: 11:30 ~ 14:00 (일 휴무)",
                                 "thumbnail": {
-                                    "imageUrl": ""
+                                    "imageUrl": "https://avatars1.githubusercontent.com/u/48274638?s=460&v=4"
                                 },
                                 "buttons": [
                                     {
-                                        "action": "weblink",
+                                        "action": "webLink",
                                         "label": "메뉴 확인하기(2층)",
                                         "webLinkUrl": "http://dgucoop.dongguk.edu/mobile/menu.html?code=1"
                                     },
                                     {
-                                        "action": "weblink",
+                                        "action": "webLink",
                                         "label": "메뉴 확인하기(3층)",
                                         "webLinkUrl": "http://dgucoop.dongguk.edu/mobile/menu.html?code=5"
                                     }
@@ -89,11 +89,11 @@ def restaurant():
                                 "title": "남산학사",
                                 "description": "운영시간 \n 평일: 08:00 ~ 19:00 \n 주말: 휴무",
                                 "thumbnail": {
-                                    "imageUrl": ""
+                                    "imageUrl": "https://avatars1.githubusercontent.com/u/48274638?s=460&v=4"
                                 },
                                 "buttons": [
                                     {
-                                        "action": "weblink",
+                                        "action": "webLink",
                                         "label": "메뉴 확인하기",
                                         "webLinkUrl": "http://dgucoop.dongguk.edu/mobile/menu.html?code=8"
                                     }
@@ -103,11 +103,11 @@ def restaurant():
                                 "title": "그루터기",
                                 "description": "운영시간 \n 방학 중 운영중단",
                                 "thumbnail": {
-                                    "imageUrl": ""
+                                    "imageUrl": "https://avatars1.githubusercontent.com/u/48274638?s=460&v=4"
                                 },
                                 "buttons": [
                                     {
-                                        "action": "weblink",
+                                        "action": "webLink",
                                         "label": "메뉴 확인하기",
                                         "webLinkUrl": "http://dgucoop.dongguk.edu/mobile/menu.html?code=2"
                                     }
@@ -117,11 +117,11 @@ def restaurant():
                                 "title": "가든쿡",
                                 "description": "운영시간 \n 평일: 11:00 ~ 18:00 \n 주말: 11:00 ~ 18:00 (일 휴무)",
                                 "thumbnail": {
-                                    "imageUrl": ""
+                                    "imageUrl": "https://avatars1.githubusercontent.com/u/48274638?s=460&v=4"
                                 },
                                 "buttons": [
                                     {
-                                        "action": "weblink",
+                                        "action": "webLink",
                                         "label": "메뉴 확인하기",
                                         "webLinkUrl": "http://dgucoop.dongguk.edu/mobile/menu.html?code=9"
                                     }
