@@ -1,0 +1,73 @@
+from flask import Flask, jsonify
+from requests_html import HTMLSession
+import requests
+from bs4 import BeautifulSoup
+import threading
+from time import sleep
+
+def scrap() :
+    url = "https://lib.dongguk.edu"
+    session = HTMLSession()
+    r = session.get(url)
+    session.close()
+    r.html.render()
+
+app = Flask("__name__")
+
+@app.route("/message")
+def message():
+    return "hello"
+
+@app.route("/bs4")
+def bs4():
+    url = "https://lib.dongguk.edu/"
+    res = requests.get(url).text
+    return "bs4"
+
+@app.route("/requests", methods=["POST","GET"])
+def requests_test():
+    fhandle = open("practice.txt", "r")
+    seates = ""
+    for line in fhandle:
+        seates = seates+line.rstrip()
+        seates = seates+"\n"
+        
+    res = {
+        "version" : "2.0",
+        "template" : {
+            "outputs" : [
+                {
+                    "simpleText" :{
+                        "text" : seates
+                    }
+                }
+            ]
+        }
+    }
+    return jsonify(res)
+
+@app.route("/lib", methods=["POST"])
+def lib():
+    #my_thread = threading.Thread(target=scrap, args=())
+    #my_thread.start()
+    scrap()
+    sleep(3)
+    
+    res = {
+        "version" : "2.0",
+        "template" : {
+            "outputs" : [
+                {
+                    "simpleText" :{
+                        "text" : "hello"
+                    }
+                }
+            ]
+        }
+    }
+    return jsonify(res)
+    
+    
+if __name__ == "__main__" :
+    app.run(host="0.0.0.0")
+    
