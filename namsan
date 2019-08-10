@@ -1,0 +1,35 @@
+import re
+import requests
+from bs4 import BeautifulSoup
+
+def getMenu():
+    url = "http://dgucoop.dongguk.edu/mobile/menu.html?code=8"
+    res = requests.get(url)
+    res.encoding = None
+
+    html = res.text
+    bs = BeautifulSoup(html, "html.parser")
+
+    tags_td = bs.findAll("td")
+
+    menu = "[남산학사 오늘의 메뉴]\n"
+
+    for i in [0,1,2] :
+        for j in range(5+i, len(tags_td), 5) :
+            if(j == 5+i) :
+                menu = menu+"<"+tags_td[1+i].text+">\n"
+            if(len(tags_td[j].text) <= 0) :
+                continue
+            corner = tags_td[j-(i+1)].text+"\n"
+            text = tags_td[j].text
+            if(text.find("￦") != -1):
+                #￦가 있는 경우
+                text = text.replace("￦ ", " ￦")
+                text = re.sub("\S{2}산\S*","",text)
+            elif(re.search("\r\n\d*원", text)):
+                text = re.sub("\(\D*\)\r\n(?P<won>\d*)원"," ￦\g<won>",text)
+            elif(re.search("\s{2}\d*원", text)):
+                text = re.sub("(?P<won>\d*)원","￦\g<won>", text)
+            menu = menu+corner+text+"\n\n"
+    return menu
+#print(getMenu())
