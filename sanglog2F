@@ -1,0 +1,44 @@
+import requests
+import re
+from bs4 import BeautifulSoup
+
+#상록원 2층
+def getMenu():
+    url = "http://dgucoop.dongguk.edu/mobile/menu.html?code=1"
+    res = requests.get(url)
+    res.encoding = None
+    html = res.text
+
+    bs = BeautifulSoup(html, "html.parser")
+
+    tags_td = bs.findAll("td")
+
+    menu = "[상록원2층 오늘의 메뉴]\n"+"<"+tags_td[1].text+">\n"
+
+    for i in [0,1] :
+        idx = 3
+        for j in range(7+i, len(tags_td), 3) :
+            idx = idx + 3
+            if(i == 1 and j == 8) :
+                menu = menu+"\n<"+tags_td[2].text+">\n"
+            if(len(tags_td[j]) == 0) :
+                continue
+            menu = menu+""+tags_td[idx].text+"\n"
+            text = re.sub("<span.*</span>", "",str(tags_td[j]))
+            text = re.sub("<.*?>","",text).replace("amp;","")
+
+            if(text.find("￦") >= 0) :
+                #￦가 있는 경우
+                text = text.replace("￦ ", " ￦")
+            else :
+                #￦가 없는 경우
+                text = text.replace(" ", " ￦").replace("원", "")
+            menu = menu+text+"\n\n"
+    #백반 추가
+    menu = menu+"\n<중식&석식>\n"+tags_td[3].text+"\n"
+    #백반 메뉴 추가
+    text = re.sub("T\S*\r\n.*\r\n", "",tags_td[4].text)
+    menu = menu+text+"\n"
+    return menu
+
+#print(getMenu())
